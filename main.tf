@@ -93,7 +93,7 @@ output "tags" {
   value = module.this.tags
 }
 
-output "this" {
+output "context" {
   value = module.this.context
 }
 
