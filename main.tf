@@ -1,4 +1,18 @@
-## Variables
+# EC2
+
+data "aws_availability_zones" "available" {
+  filter {
+    name   = "opt-in-status"
+    values = ["opt-in-not-required"]
+  }
+}
+
+output "aws_availability_zones_names" {
+  value = data.aws_availability_zones.available.names
+  description = "List of the Availability Zone names available to the account"
+
+}
+
 
 ## IAM
 
@@ -39,18 +53,21 @@ locals {
 
 output "aws_reserved_sso_awsadministratoraccess" {
   value = local.aws_reserved_sso_awsadministratoraccess
-  description = "AWSReservedSSO_AWSAdministratorAccess"
+  description = "ARN of the AWSReservedSSO_AWSAdministratorAccess role"
 }
 
 output "aws_reserved_sso_awspoweruseraccess" {
   value = local.aws_reserved_sso_awspoweruseraccess
-  description = "AWSReservedSSO_AWSPowerUserAccess"
+  description = "ARN of the AWSReservedSSO_AWSPowerUserAccess role"
 }
 
 output "aws_reserved_sso_awsreadonlyaccess" {
   value = local.aws_reserved_sso_awsreadonlyaccess
-  description = "AWSReservedSSO_AWSPowerUserAccess"
+  description = "ARN of the AWSReservedSSO_AWSPowerUserAccess role"
 }
+
+
+# Label
 
 output "namespace" {
   value = module.this.namespace
